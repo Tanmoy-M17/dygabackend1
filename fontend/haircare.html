@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="skincare.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow" />
+</head>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "30%";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+<style>
+  
+</style>
+
+<body>
+    <div id="main">
+
+        <div id="navbar">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <p id="welcom" >Welcome</p>
+                <p id="welcom2" ><span>Login &nbsp;</span> or <span>&nbsp; Create Account</span></p>
+              
+                <a href="skincare.html">Skin Care</a>
+                <a href="haircare.html">Hair Care</a>
+                <a href="baby&bath.html">Bath & Baby</a>
+                <a href="oralcare.html">Oral Care</a>
+                <a href="wellness.html">Wellness</a>
+                <a href="baby&bath.html">Baby Care</a>
+                <a href="#">Men</a>
+                <a href="#">Combo</a>
+                <a href="#">Gifting</a>
+                <a href="#">Offer</a>
+               
+                
+            </div>
+    
+            <span style="font-size:30px;cursor:pointer;margin: 30% 0% 0% 2%;" onclick="openNav()">&#9776;</span>
+            <div id="logodiv">
+                <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/files/200x150-01_140x@2x.png?v=1640868807" alt="" id="logo">
+            </div>
+            
+        </div>
+
+        <div id="otherstuff">
+            <!-- <div id="backhome"><a href="homepage.html">Home >skincare</a></div> -->
+            <h3 id="pagename">Hair Care</h3>
+            <!-- <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/collections/BANNER-02_3_x600.jpg?v=1647860211%20600w,%20//cdn.shopify.com/s/files/1/0034/7901/1441/collections/BANNER-02_3_800x.jpg?v=1647860211%20800w,%20//cdn.shopify.com/s/files/1/0034/7901/1441/collections/BANNER-02_3_1200x.jpg?v=1647860211%201200w,%20//cdn.shopify.com/s/files/1/0034/7901/1441/collections/BANNER-02_3_1400x.jpg?v=1647860211%201400w,%20//cdn.shopify.com/s/files/1/0034/7901/1441/collections/BANNER-02_3_1600x.jpg?v=1647860211%201600w" alt="" id="bigimg"> -->
+
+
+        </div>
+
+        <div id="cardcontainer"></div>
+
+
+        <div id="footer"></div>
+    </div>
+</body>
+<script type="module">
+    import { makeAPIcall, appendData } from "./scripts/skincare.js"
+    // import{footer} from "./components/footer.js"
+
+    // let footerH = document.getElementById('footer')
+    // let footerimp = footer()
+
+    // footerH.append(footerimp)
+
+
+    let data = await makeAPIcall()
+
+    let cardcontainer = document.getElementById("cardcontainer")
+
+    appendData(data, cardcontainer)
+
+
+
+    // --------------------------------------------navbar js-------------------------------------
+
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("navbar").style.top = "0";
+        } else {
+            document.getElementById("navbar").style.top = "-85px";
+        }
+        prevScrollpos = currentScrollPos;
+    }
+// ---------------------------------------------
+
+
+</script>
+
+</html>
